@@ -8,6 +8,11 @@ const nextConfig = {
       },
     ],
   },
+  distDir: 'build',
+  output: 'standalone',
+  experimental: {
+    outputStandalone: true
+  }
 }
 
 module.exports = nextConfig 
