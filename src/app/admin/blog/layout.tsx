@@ -8,7 +8,7 @@ export default function AdminBlogLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="max-w-[1400px] mx-auto px-6 lg:px-8 py-12">
+    <div className="pt-24 pb-12 px-6 lg:px-8 max-w-[1400px] mx-auto">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold text-gray-900">Blog Management</h1>
         <Link
