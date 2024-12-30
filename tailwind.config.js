@@ -1,13 +1,14 @@
 /** @type {import('tailwindcss').Config} */
-import typography from '@tailwindcss/typography';
-
-export default {
+module.exports = {
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
+        border: "hsl(var(--border))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         primary: {
           50: '#f5f3ff',
           100: '#ede9fe',
@@ -24,23 +25,9 @@ export default {
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
       },
-      animation: {
-        'fade-in': 'fadeIn 0.5s ease-out forwards',
-      },
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            color: theme('colors.gray.900'),
-            a: {
-              color: theme('colors.indigo.600'),
-              '&:hover': {
-                color: theme('colors.indigo.700'),
-              },
-            },
-          },
-        },
-      }),
     },
   },
-  plugins: [typography],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 } 
