@@ -5,7 +5,10 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import { Providers } from './providers';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   title: 'AlterMindAI',
@@ -18,15 +21,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.className}>
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-      </head>
-      <body className="min-h-screen bg-white">
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} font-sans antialiased`}>
         <Providers>
-          <div className="flex flex-col min-h-screen">
+          <div className="relative flex min-h-screen flex-col">
             <Header />
-            <main className="flex-grow">
+            <main className="flex-1">
               {children}
             </main>
             <Footer />
