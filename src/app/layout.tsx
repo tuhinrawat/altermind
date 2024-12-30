@@ -1,5 +1,3 @@
-'use client';
-
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -21,6 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body className="min-h-screen bg-white">
         <Providers>
           <div className="flex flex-col min-h-screen">
