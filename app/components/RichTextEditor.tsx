@@ -5,7 +5,8 @@ import StarterKit from '@tiptap/starter-kit';
 import { useEffect, useState } from 'react';
 
 interface RichTextEditorProps {
-  value: string;
+  value?: string;
+  content?: string;
   onChange: (value: string) => void;
 }
 
@@ -74,12 +75,13 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
   );
 };
 
-export default function RichTextEditor({ value, onChange }: RichTextEditorProps) {
+export default function RichTextEditor({ value, content, onChange }: RichTextEditorProps) {
   const [mounted, setMounted] = useState(false);
+  const initialContent = value || content || '';
 
   const editor = useEditor({
     extensions: [StarterKit],
-    content: value,
+    content: initialContent,
     onUpdate: ({ editor }) => {
       onChange(editor.getHTML());
     },
@@ -96,10 +98,10 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
   }, []);
 
   useEffect(() => {
-    if (editor && value !== editor.getHTML()) {
-      editor.commands.setContent(value);
+    if (editor && initialContent !== editor.getHTML()) {
+      editor.commands.setContent(initialContent);
     }
-  }, [value, editor]);
+  }, [value, content, editor, initialContent]);
 
   if (!mounted) {
     return <div className="h-64 bg-gray-50 animate-pulse" />;
