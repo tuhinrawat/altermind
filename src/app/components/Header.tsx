@@ -22,8 +22,7 @@ export default function Header() {
   const navLinks = [
     { href: '/about', label: 'About' },
     { href: '/pricing', label: 'Pricing' },
-    { href: '/blog', label: 'Blog' },
-    { href: '/contact', label: 'Contact' }
+    { href: '/blog', label: 'Blog' }
   ];
 
   return (
@@ -39,9 +38,7 @@ export default function Header() {
           {/* Logo */}
           <Link 
             href="/" 
-            className={`text-2xl font-bold tracking-tight ${
-              isScrolled || isMenuOpen ? 'text-gray-900' : 'text-gray-900'
-            }`}
+            className="text-2xl font-bold tracking-tight text-gray-900"
           >
             AlterMindAI
           </Link>
@@ -52,9 +49,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`${
-                  isScrolled || isMenuOpen ? 'text-gray-600' : 'text-gray-600'
-                } hover:text-gray-900 transition-colors text-sm font-medium ${
+                className={`text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium ${
                   pathname === link.href ? 'text-indigo-600' : ''
                 }`}
               >
@@ -79,7 +74,7 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button 
-            className={`md:hidden ${isScrolled || isMenuOpen ? 'text-gray-900' : 'text-gray-900'}`}
+            className="md:hidden text-gray-900"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
