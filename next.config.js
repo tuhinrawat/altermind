@@ -8,16 +8,16 @@ const nextConfig = {
       },
     ],
   },
-  distDir: 'build',
   output: 'standalone',
   experimental: {
-    outputStandalone: true
+    serverActions: true,
   },
-  basePath: '',
-  assetPrefix: '',
-  env: {
-    projectName: 'altermind_blog'
-  }
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+  eslint: {
+    ignoreDuringBuilds: false,
+  },
 }
 
 module.exports = nextConfig 

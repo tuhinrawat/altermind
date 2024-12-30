@@ -83,7 +83,7 @@ export default function CreateBlogPost() {
               <label className={labelStyles}>
                 Content
               </label>
-              <RichTextEditor content={content} onChange={setContent} />
+              <RichTextEditor value={content} onChange={setContent} />
             </div>
 
             {/* Excerpt */}
