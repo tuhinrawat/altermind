@@ -1,5 +1,5 @@
-import { connectToDatabase } from '../../../lib/db';
-import BlogPost, { IBlogPost } from '../../../models/BlogPost';
+import { connectToDatabase } from '@/lib/db';
+import BlogPost, { IBlogPost } from '@/models/BlogPost';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 

@@ -1,5 +1,5 @@
-import { connectToDatabase } from '../../lib/db';
-import BlogPost, { IBlogPost } from '../../models/BlogPost';
+import { connectToDatabase } from '@/lib/db';
+import BlogPost, { IBlogPost } from '@/models/BlogPost';
 import Link from 'next/link';
 import Image from 'next/image';
 import NewsletterSubscribe from '../components/NewsletterSubscribe';
