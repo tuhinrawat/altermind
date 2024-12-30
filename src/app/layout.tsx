@@ -1,19 +1,14 @@
-import type { Metadata } from 'next';
+import '@/styles/globals.css';
 import { Inter } from 'next/font/google';
-import '../styles/globals.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
 import { Providers } from './providers';
+import Header from '@/app/components/Header';
+import Footer from '@/app/components/Footer';
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
+const inter = Inter({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'AlterMindAI',
-  description: 'Transforming businesses with AI solutions',
+  description: 'Empowering businesses with AI solutions',
 };
 
 export default function RootLayout({
@@ -22,16 +17,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
-      <body className="min-h-screen bg-background font-sans antialiased">
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
         <Providers>
-          <div className="relative flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1">
-              {children}
-            </main>
-            <Footer />
-          </div>
+          <Header />
+          <main className="min-h-screen pt-24 md:pt-28">
+            {children}
+          </main>
+          <Footer />
         </Providers>
       </body>
     </html>

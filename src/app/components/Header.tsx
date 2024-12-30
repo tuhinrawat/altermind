@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
@@ -15,6 +16,8 @@ export default function Header() {
       setIsScrolled(window.scrollY > 10);
     };
 
+    // Set initial scroll state
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -27,20 +30,24 @@ export default function Header() {
 
   return (
     <header 
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled || isMenuOpen
-          ? 'bg-white/95 backdrop-blur-sm border-b border-gray-200' 
-          : 'bg-transparent'
+      className={`fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm ${
+        isScrolled ? 'border-b border-gray-200' : ''
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-6">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-24">
           {/* Logo */}
-          <Link 
-            href="/" 
-            className="text-2xl font-bold tracking-tight text-gray-900"
-          >
-            AlterMindAI
+          <Link href="/" className="relative flex items-center">
+            <div className="relative w-48 h-12">
+              <Image
+                src="/logo-color.png"
+                alt="AlterMindAI Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+            <span className="sr-only">AlterMindAI</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -49,7 +56,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium ${
+                className={`transition-colors text-sm font-medium text-gray-600 hover:text-gray-900 ${
                   pathname === link.href ? 'text-indigo-600' : ''
                 }`}
               >
@@ -59,14 +66,14 @@ export default function Header() {
             {session?.user?.role === 'admin' && (
               <Link
                 href="/admin/blog"
-                className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                className="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900"
               >
                 Blog Management
               </Link>
             )}
             <Link
               href="/contact"
-              className="bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors"
+              className="px-5 py-2.5 rounded-lg text-sm font-medium transition-colors bg-indigo-600 text-white hover:bg-indigo-700"
             >
               Book a Demo
             </Link>
@@ -96,7 +103,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium ${
+                  className={`transition-colors text-sm font-medium text-gray-600 hover:text-gray-900 ${
                     pathname === link.href ? 'text-indigo-600' : ''
                   }`}
                   onClick={() => setIsMenuOpen(false)}
@@ -107,7 +114,7 @@ export default function Header() {
               {session?.user?.role === 'admin' && (
                 <Link
                   href="/admin/blog"
-                  className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Blog Management
@@ -115,7 +122,7 @@ export default function Header() {
               )}
               <Link
                 href="/contact"
-                className="bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors text-center"
+                className="px-5 py-2.5 rounded-lg text-sm font-medium transition-colors text-center bg-indigo-600 text-white hover:bg-indigo-700"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Book a Demo
