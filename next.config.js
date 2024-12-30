@@ -12,6 +12,11 @@ const nextConfig = {
   output: 'standalone',
   experimental: {
     outputStandalone: true
+  },
+  basePath: '',
+  assetPrefix: '',
+  env: {
+    projectName: 'altermind_blog'
   }
 }
 
